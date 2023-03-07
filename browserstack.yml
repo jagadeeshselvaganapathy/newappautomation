@@ -1,0 +1,15 @@
+userName: jagadeesh_fKpl7b
+accessKey: JybmMjv9aYXwps7TMbpC
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: Chrome
+    browserVersion: 102.0
+  - os: Windows
+    osVersion: 10
+    browserName: Firefox
+    browserVersion: 102.0
+  - os: OS X
+    osVersion: Big Sur
+    browserName: Edge
+    browserVersion: 107.0
