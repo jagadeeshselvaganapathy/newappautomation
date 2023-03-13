@@ -27,11 +27,21 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
+               <dependency>
+<groupId>io.appium</groupId>
+<artifactId>java-client</artifactId>
+<version>7.0.0</version>
+</dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+              <dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>8.3.0</version>
+		</dependency>
         <dependency>
             <groupId>com.browserstack</groupId>
             <artifactId>browserstack-java-sdk</artifactId>
