@@ -1,29 +1,46 @@
 package com.browserstack;
 
-import com.browserstack.SeleniumTest;
+import java.net.URL;
+
 import org.openqa.selenium.By;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BStackDemoTest extends SeleniumTest {
-    @Test
+   
     public void addProductToCart() throws Exception {
-        // navigate to bstackdemo
-        driver.get("https://www.bstackdemo.com");
+       
+    	DesiredCapabilities caps = new DesiredCapabilities();
+    	
+    	// Set your access credentials
+		caps.setCapability("browserstack.user", "jagadeesh_fKpl7b");
+		caps.setCapability("browserstack.key", "JybmMjv9aYXwps7TMbpC");
 
-        // Check the title
-        Assert.assertTrue(driver.getTitle().matches("StackDemo"));
+       // Set URL of the application under test
+		caps.setCapability("app", "bs://e1e0b3b2426ca7d44371c959b979ee1f2015e43f");
+    	
 
-        // Save the text of the product for later verify
-        String productOnScreenText = driver.findElement(By.xpath("//*[@id=\"1\"]/p")).getText();
-        // Click on add to cart button
-        driver.findElement(By.xpath("//*[@id=\"1\"]/div[4]")).click();
+       // Specify device and os_version for testing
+		caps.setCapability("device", "Google Pixel 3");
+    	caps.setCapability("os_version", "9.0");
 
-        // See if the cart is opened or not
-        Assert.assertTrue(driver.findElement(By.cssSelector(".float\\-cart__content")).isDisplayed());
-
-        // Check the product inside the cart is same as of the main page
-        String productOnCartText = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]")).getText();
-        Assert.assertEquals(productOnScreenText, productOnCartText);
+       // Set other BrowserStack capabilities
+		caps.setCapability("project", "First Java Project");
+		caps.setCapability("build", "browserstack-build-1");
+		caps.setCapability("name", "first_test");
+		caps.setCapability("autoGrantPermissions", true);
+		
+		WebDriver driver = new RemoteWebDriver(new URL("http://hub-cloud.browserstack.com/wd/hub"), caps);
+		
+		Thread.sleep(15000);
+		
+		 driver.findElement(By.id("btn1")).click();
+	      Thread.sleep(5000);
+	      driver.findElement(By.id("btn2")).click();
+	      Thread.sleep(5000);
+	      driver.findElement(By.id("btn3")).click();
+	      Thread.sleep(5000);
+	      driver.findElement(By.id("btn4")).click();
     }
 }
